@@ -169,6 +169,9 @@ outputs:
     build:
       # XXX: punting on non-Linux platforms due to general issues
       skip: True                                                                 # [not linux]
+      rpaths:
+        - lib/
+        - {{ SP_DIR }}/adbc_driver_manager
     test:
       commands:
         - test ! -f $SP_DIR/adbc_driver_manager/adbc.h                           # [unix]
