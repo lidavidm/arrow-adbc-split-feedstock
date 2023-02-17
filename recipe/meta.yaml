@@ -153,18 +153,17 @@ outputs:
     requirements:
       build:
         - {{ compiler('cxx') }}
-        - cross-python_{{ target_platform }}                                     # [build_platform != target_platform]
-        - cython
-        - pip
-        - python >=3.9
-        - setuptools
+        - python                                 # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+        - cython                                 # [build_platform != target_platform]
+        - numpy                                  # [build_platform != target_platform]
       host:
         - cython
         - pip
-        - python >=3.9
+        - python
         - setuptools
       run:
-        - python >=3.9
+        - python
       run_constrained:
         - pyarrow >=8.0.0
     build:
