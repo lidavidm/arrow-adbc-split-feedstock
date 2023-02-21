@@ -186,6 +186,7 @@ outputs:
       noarch: python
       # XXX: punting on non-unix platforms due to general issues
       skip: True                                                                 # [win]
+      skip: True                                                                 # [build_platform != target_platform]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
@@ -212,6 +213,7 @@ outputs:
       noarch: python
       # XXX: punting on non-unix platforms due to general issues
       skip: True                                                                 # [win]
+      skip: True                                                                 # [build_platform != target_platform]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
@@ -238,6 +240,7 @@ outputs:
       noarch: python
       # XXX: punting on non-unix platforms due to general issues
       skip: True                                                                 # [win]
+      skip: True                                                                 # [build_platform != target_platform]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
