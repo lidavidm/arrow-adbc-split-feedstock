@@ -23,8 +23,8 @@ outputs:
       host:
       run:
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-manager", max_pin="x.x") }}
     test:
@@ -56,8 +56,8 @@ outputs:
         - go-cgo >=1.18
         - ninja
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-flightsql", max_pin="x.x") }}
       ignore_run_exports_from:
@@ -91,8 +91,8 @@ outputs:
       run:
         - libpq
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-postgresql", max_pin="x.x") }}
     test:
@@ -125,8 +125,8 @@ outputs:
       run:
         - libsqlite
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-sqlite", max_pin="x.x") }}
       ignore_run_exports_from:
@@ -167,8 +167,8 @@ outputs:
       run_constrained:
         - pyarrow >=8.0.0
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
       rpaths:
         - lib/
         - {{ SP_DIR }}/adbc_driver_manager
@@ -184,8 +184,8 @@ outputs:
   - name: adbc-driver-flightsql
     build:
       noarch: python
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
@@ -210,8 +210,8 @@ outputs:
   - name: adbc-driver-postgresql
     build:
       noarch: python
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
@@ -236,8 +236,8 @@ outputs:
   - name: adbc-driver-sqlite
     build:
       noarch: python
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [not win]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
