@@ -40,24 +40,24 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_python3.10.____cpython</td>
+              <td>win_64_python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18715&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arrow-adbc-split-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arrow-adbc-split-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.11.____cpython</td>
+              <td>win_64_python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18715&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arrow-adbc-split-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arrow-adbc-split-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_python3.9.____cpython</td>
+              <td>win_64_python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=18715&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arrow-adbc-split-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arrow-adbc-split-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
@@ -73,10 +73,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-adbc--driver--flightsql-green.svg)](https://anaconda.org/conda-forge/adbc-driver-flightsql) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adbc-driver-flightsql.svg)](https://anaconda.org/conda-forge/adbc-driver-flightsql) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adbc-driver-flightsql.svg)](https://anaconda.org/conda-forge/adbc-driver-flightsql) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adbc-driver-flightsql.svg)](https://anaconda.org/conda-forge/adbc-driver-flightsql) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-adbc--driver--manager-green.svg)](https://anaconda.org/conda-forge/adbc-driver-manager) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adbc-driver-manager.svg)](https://anaconda.org/conda-forge/adbc-driver-manager) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adbc-driver-manager.svg)](https://anaconda.org/conda-forge/adbc-driver-manager) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adbc-driver-manager.svg)](https://anaconda.org/conda-forge/adbc-driver-manager) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-adbc--driver--postgresql-green.svg)](https://anaconda.org/conda-forge/adbc-driver-postgresql) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adbc-driver-postgresql.svg)](https://anaconda.org/conda-forge/adbc-driver-postgresql) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adbc-driver-postgresql.svg)](https://anaconda.org/conda-forge/adbc-driver-postgresql) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adbc-driver-postgresql.svg)](https://anaconda.org/conda-forge/adbc-driver-postgresql) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-adbc--driver--sqlite-green.svg)](https://anaconda.org/conda-forge/adbc-driver-sqlite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adbc-driver-sqlite.svg)](https://anaconda.org/conda-forge/adbc-driver-sqlite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adbc-driver-sqlite.svg)](https://anaconda.org/conda-forge/adbc-driver-sqlite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adbc-driver-sqlite.svg)](https://anaconda.org/conda-forge/adbc-driver-sqlite) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libadbc--driver--flightsql-green.svg)](https://anaconda.org/conda-forge/libadbc-driver-flightsql) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libadbc-driver-flightsql.svg)](https://anaconda.org/conda-forge/libadbc-driver-flightsql) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libadbc-driver-flightsql.svg)](https://anaconda.org/conda-forge/libadbc-driver-flightsql) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libadbc-driver-flightsql.svg)](https://anaconda.org/conda-forge/libadbc-driver-flightsql) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libadbc--driver--manager-green.svg)](https://anaconda.org/conda-forge/libadbc-driver-manager) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libadbc-driver-manager.svg)](https://anaconda.org/conda-forge/libadbc-driver-manager) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libadbc-driver-manager.svg)](https://anaconda.org/conda-forge/libadbc-driver-manager) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libadbc-driver-manager.svg)](https://anaconda.org/conda-forge/libadbc-driver-manager) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libadbc--driver--postgresql-green.svg)](https://anaconda.org/conda-forge/libadbc-driver-postgresql) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libadbc-driver-postgresql.svg)](https://anaconda.org/conda-forge/libadbc-driver-postgresql) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libadbc-driver-postgresql.svg)](https://anaconda.org/conda-forge/libadbc-driver-postgresql) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libadbc-driver-postgresql.svg)](https://anaconda.org/conda-forge/libadbc-driver-postgresql) |
@@ -92,41 +89,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `adbc-driver-flightsql, adbc-driver-manager, adbc-driver-postgresql, adbc-driver-sqlite, libadbc-driver-flightsql, libadbc-driver-manager, libadbc-driver-postgresql, libadbc-driver-sqlite` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `adbc-driver-manager, libadbc-driver-flightsql, libadbc-driver-manager, libadbc-driver-postgresql, libadbc-driver-sqlite` can be installed with `conda`:
 
 ```
-conda install adbc-driver-flightsql adbc-driver-manager adbc-driver-postgresql adbc-driver-sqlite libadbc-driver-flightsql libadbc-driver-manager libadbc-driver-postgresql libadbc-driver-sqlite
-```
-
-or with `mamba`:
-
-```
-mamba install adbc-driver-flightsql adbc-driver-manager adbc-driver-postgresql adbc-driver-sqlite libadbc-driver-flightsql libadbc-driver-manager libadbc-driver-postgresql libadbc-driver-sqlite
-```
-
-It is possible to list all of the versions of `adbc-driver-flightsql` available on your platform with `conda`:
-
-```
-conda search adbc-driver-flightsql --channel conda-forge
+conda install adbc-driver-manager libadbc-driver-flightsql libadbc-driver-manager libadbc-driver-postgresql libadbc-driver-sqlite
 ```
 
 or with `mamba`:
 
 ```
-mamba search adbc-driver-flightsql --channel conda-forge
+mamba install adbc-driver-manager libadbc-driver-flightsql libadbc-driver-manager libadbc-driver-postgresql libadbc-driver-sqlite
+```
+
+It is possible to list all of the versions of `adbc-driver-manager` available on your platform with `conda`:
+
+```
+conda search adbc-driver-manager --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search adbc-driver-manager --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search adbc-driver-flightsql --channel conda-forge
+mamba repoquery search adbc-driver-manager --channel conda-forge
 
-# List packages depending on `adbc-driver-flightsql`:
-mamba repoquery whoneeds adbc-driver-flightsql --channel conda-forge
+# List packages depending on `adbc-driver-manager`:
+mamba repoquery whoneeds adbc-driver-manager --channel conda-forge
 
-# List dependencies of `adbc-driver-flightsql`:
-mamba repoquery depends adbc-driver-flightsql --channel conda-forge
+# List dependencies of `adbc-driver-manager`:
+mamba repoquery depends adbc-driver-manager --channel conda-forge
 ```
 
 
