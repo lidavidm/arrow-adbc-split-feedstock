@@ -23,8 +23,8 @@ outputs:
       host:
       run:
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-manager", max_pin="x.x") }}
     test:
@@ -56,8 +56,8 @@ outputs:
         - go-cgo >=1.18
         - ninja
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-flightsql", max_pin="x.x") }}
       ignore_run_exports_from:
@@ -66,15 +66,17 @@ outputs:
     test:
       commands:
         - test ! -f $PREFIX/include/adbc.h                                       # [unix]
-        - test -f $PREFIX/lib/pkgconfig/adbc-driver-flightsql.pc                 # [unix]
+        - test -f $PREFIX/lib/pkgconfig/adbc-driver-flightsql.pc                  # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_flightsql.a                       # [unix]
         - test -f $PREFIX/lib/libadbc_driver_flightsql.so.2                      # [linux]
-        - test -f $PREFIX/lib/libadbc_driver_flightsql.2.dylib                   # [osx]
+        - test -f $PREFIX/lib/libadbc_driver_flightsql.dylib                     # [osx]
+        # TODO: testing exact dylib soname is fragile?
+        # - test -f $PREFIX/lib/libadbc_driver_flightsql.2.dylib                 # [osx]
 
-        - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
+        - if exist %LIBRARY_INC%\adbc.h exit 1                                  # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_flightsql.dll exit 1            # [win]
         - if not exist %LIBRARY_LIB%\adbc_driver_flightsql.lib exit 1            # [win]
-        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-flightsql.pc exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-flightsql.pc exit 1    # [win]
 
   - name: libadbc-driver-postgresql
     script: build-cpp.sh                                                         # [not win]
@@ -91,8 +93,8 @@ outputs:
       run:
         - libpq
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-postgresql", max_pin="x.x") }}
     test:
@@ -102,13 +104,15 @@ outputs:
         - test -f $PREFIX/lib/pkgconfig/adbc-driver-postgresql.pc                # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_postgresql.a                      # [unix]
         - test -f $PREFIX/lib/libadbc_driver_postgresql.so.2                     # [linux]
-        - test -f $PREFIX/lib/libadbc_driver_postgresql.2.dylib                  # [osx]
+        - test -f $PREFIX/lib/libadbc_driver_postgresql.dylib                    # [osx]
+        # TODO: testing exact dylib soname is fragile?
+        # - test -f $PREFIX/lib/libadbc_driver_postgresql.2.dylib                # [osx]
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_postgresql.dll exit 1           # [win]
         - if not exist %LIBRARY_LIB%\adbc_driver_postgresql.lib exit 1           # [win]
         - if not exist %LIBRARY_LIB%\cmake\AdbcDriverPostgreSQL exit 1           # [win]
-        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-postgresql.pc exit 1  # [win]
+        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-postgresql.pc exit 1   # [win]
 
   - name: libadbc-driver-sqlite
     script: build-cpp.sh                                                         # [not win]
@@ -125,8 +129,8 @@ outputs:
       run:
         - libsqlite
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-sqlite", max_pin="x.x") }}
       ignore_run_exports_from:
@@ -136,10 +140,13 @@ outputs:
       commands:
         - test ! -f $PREFIX/include/adbc.h                                       # [unix]
         - test -d $PREFIX/lib/cmake/AdbcDriverSQLite/                            # [unix]
-        - test -f $PREFIX/lib/pkgconfig/adbc-driver-sqlite.pc                    # [unix]
+        - test -f $PREFIX/lib/pkgconfig/adbc-driver-sqlite.pc                     # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_sqlite.a                          # [unix]
         - test -f $PREFIX/lib/libadbc_driver_sqlite.so.2                         # [linux]
-        - test -f $PREFIX/lib/libadbc_driver_sqlite.2.dylib                      # [osx]
+        - test -f $PREFIX/lib/libadbc_driver_sqlite.dylib                        # [osx]
+        # TODO: testing exact dylib soname is fragile?
+        # - test -f $PREFIX/lib/libadbc_driver_sqlite.2.dylib                    # [osx]
+        
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_sqlite.dll exit 1               # [win]
@@ -167,8 +174,8 @@ outputs:
       run_constrained:
         - pyarrow >=8.0.0
     build:
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
       rpaths:
         - lib/
         - {{ SP_DIR }}/adbc_driver_manager
@@ -184,8 +191,9 @@ outputs:
   - name: adbc-driver-flightsql
     build:
       noarch: python
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
+      skip: True                                                                 # [build_platform != target_platform]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
@@ -210,8 +218,9 @@ outputs:
   - name: adbc-driver-postgresql
     build:
       noarch: python
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
+      skip: True                                                                 # [build_platform != target_platform]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:
@@ -236,8 +245,9 @@ outputs:
   - name: adbc-driver-sqlite
     build:
       noarch: python
-      # XXX: punting on non-Linux platforms due to general issues
-      skip: True                                                                 # [not linux]
+      # XXX: punting on non-unix platforms due to general issues
+      skip: True                                                                 # [win]
+      skip: True                                                                 # [build_platform != target_platform]
     script: build-python.sh                                                      # [not win]
     script: build-python.bat                                                     # [win]
     requirements:

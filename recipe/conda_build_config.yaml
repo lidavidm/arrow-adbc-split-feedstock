@@ -1,0 +1,4 @@
+MACOSX_SDK_VERSION:           # [osx and x86]
+- '11.0'                      # [osx and x86]
+MACOSX_DEPLOYMENT_TARGET:     # [osx and x86]
+- '11.0'                      # [osx and x86]
