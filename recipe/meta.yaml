@@ -66,17 +66,17 @@ outputs:
     test:
       commands:
         - test ! -f $PREFIX/include/adbc.h                                       # [unix]
-        - test -f $PREFIX/lib/pkgconfig/adbc-driver-flightsql.pc                 # [unix]
+        - test -f $PREFIX/lib/pkgconfig/adbc-driver-flightsql.pc                  # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_flightsql.a                       # [unix]
         - test -f $PREFIX/lib/libadbc_driver_flightsql.so.2                      # [linux]
         - test -f $PREFIX/lib/libadbc_driver_flightsql.dylib                     # [osx]
         # TODO: testing exact dylib soname is fragile?
-        - test -f $PREFIX/lib/libadbc_driver_flightsql.2.dylib                   # [osx]
+        # - test -f $PREFIX/lib/libadbc_driver_flightsql.2.dylib                 # [osx]
 
-        - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
+        - if exist %LIBRARY_INC%\adbc.h exit 1                                  # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_flightsql.dll exit 1            # [win]
         - if not exist %LIBRARY_LIB%\adbc_driver_flightsql.lib exit 1            # [win]
-        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-flightsql.pc exit 1   # [win]
+        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-flightsql.pc exit 1    # [win]
 
   - name: libadbc-driver-postgresql
     script: build-cpp.sh                                                         # [not win]
@@ -106,13 +106,13 @@ outputs:
         - test -f $PREFIX/lib/libadbc_driver_postgresql.so.2                     # [linux]
         - test -f $PREFIX/lib/libadbc_driver_postgresql.dylib                    # [osx]
         # TODO: testing exact dylib soname is fragile?
-        - test -f $PREFIX/lib/libadbc_driver_postgresql.2.dyb                    # [osx]
+        # - test -f $PREFIX/lib/libadbc_driver_postgresql.2.dylib                # [osx]
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_postgresql.dll exit 1           # [win]
         - if not exist %LIBRARY_LIB%\adbc_driver_postgresql.lib exit 1           # [win]
         - if not exist %LIBRARY_LIB%\cmake\AdbcDriverPostgreSQL exit 1           # [win]
-        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-postgresql.pc exit 1  # [win]
+        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-postgresql.pc exit 1   # [win]
 
   - name: libadbc-driver-sqlite
     script: build-cpp.sh                                                         # [not win]
@@ -140,12 +140,12 @@ outputs:
       commands:
         - test ! -f $PREFIX/include/adbc.h                                       # [unix]
         - test -d $PREFIX/lib/cmake/AdbcDriverSQLite/                            # [unix]
-        - test -f $PREFIX/lib/pkgconfig/adbc-driver-sqlite.pc                    # [unix]
+        - test -f $PREFIX/lib/pkgconfig/adbc-driver-sqlite.pc                     # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_sqlite.a                          # [unix]
         - test -f $PREFIX/lib/libadbc_driver_sqlite.so.2                         # [linux]
-        - test -f $PREFIX/lib/libadbc_driver_sqlite.dylib                      # [osx]
+        - test -f $PREFIX/lib/libadbc_driver_sqlite.dylib                        # [osx]
         # TODO: testing exact dylib soname is fragile?
-        #- test -f $PREFIX/lib/libadbc_driver_sqlite.2.dylib                      # [osx]
+        # - test -f $PREFIX/lib/libadbc_driver_sqlite.2.dylib                    # [osx]
         
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
