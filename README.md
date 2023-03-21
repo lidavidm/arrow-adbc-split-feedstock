@@ -1,11 +1,11 @@
-About arrow-adbc-split
-======================
+About arrow-adbc-split-feedstock
+================================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/arrow-adbc-split-feedstock/blob/main/LICENSE.txt)
 
 Home: https://arrow.apache.org
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/arrow-adbc-split-feedstock/blob/main/LICENSE.txt)
 
 Summary: Database access libraries for Apache Arrow
 
