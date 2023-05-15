@@ -1,4 +1,4 @@
-{% set version = "0.3.0" %}
+{% set version = "0.4.0" %}
 
 package:
   name: arrow-adbc-split
@@ -6,15 +6,15 @@ package:
 
 source:
   url: https://dist.apache.org/repos/dist/release/arrow/apache-arrow-adbc-{{ version }}/apache-arrow-adbc-{{ version }}.tar.gz
-  sha256: 4efccf60f29467fcf249d94101d199eff053d3b01a9675cd1e56edc526de2945
+  sha256: 1a1b706950431ec2f80595d536786bcb0cc25d3665c34cdbd49788a8372e3566
 
 build:
   number: 0
 
 outputs:
   - name: libadbc-driver-manager
-    script: build-cpp.sh                                                         # [not win]
-    script: build-cpp.bat                                                        # [win]
+    script: build-cpp.sh  # [not win]
+    script: build-cpp.bat  # [win]
     requirements:
       build:
         - {{ compiler('cxx') }}
@@ -24,7 +24,7 @@ outputs:
       run:
     build:
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
+      skip: true  # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-manager", max_pin="x.x") }}
     test:
@@ -45,8 +45,8 @@ outputs:
         - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-manager.pc exit 1     # [win]
 
   - name: libadbc-driver-flightsql
-    script: build-cpp.sh                                                         # [not win]
-    script: build-cpp.bat                                                        # [win]
+    script: build-cpp.sh  # [not win]
+    script: build-cpp.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -57,7 +57,7 @@ outputs:
         - ninja
     build:
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
+      skip: true  # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-flightsql", max_pin="x.x") }}
       ignore_run_exports_from:
@@ -79,8 +79,8 @@ outputs:
         - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-flightsql.pc exit 1    # [win]
 
   - name: libadbc-driver-postgresql
-    script: build-cpp.sh                                                         # [not win]
-    script: build-cpp.bat                                                        # [win]
+    script: build-cpp.sh  # [not win]
+    script: build-cpp.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -94,7 +94,7 @@ outputs:
         - libpq
     build:
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
+      skip: true  # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-postgresql", max_pin="x.x") }}
     test:
@@ -115,8 +115,8 @@ outputs:
         - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-postgresql.pc exit 1   # [win]
 
   - name: libadbc-driver-sqlite
-    script: build-cpp.sh                                                         # [not win]
-    script: build-cpp.bat                                                        # [win]
+    script: build-cpp.sh  # [not win]
+    script: build-cpp.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -130,7 +130,7 @@ outputs:
         - libsqlite
     build:
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
+      skip: true  # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-sqlite", max_pin="x.x") }}
       ignore_run_exports_from:
@@ -146,7 +146,6 @@ outputs:
         - test -f $PREFIX/lib/libadbc_driver_sqlite.dylib                        # [osx]
         # TODO: testing exact dylib soname is fragile?
         # - test -f $PREFIX/lib/libadbc_driver_sqlite.3.dylib                    # [osx]
-        
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_sqlite.dll exit 1               # [win]
@@ -155,8 +154,8 @@ outputs:
         - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-sqlite.pc exit 1      # [win]
 
   - name: adbc-driver-manager
-    script: build-python.sh                                                      # [not win]
-    script: build-python.bat                                                     # [win]
+    script: build-python.sh  # [not win]
+    script: build-python.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -175,7 +174,7 @@ outputs:
         - pyarrow >=8.0.0
     build:
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
+      skip: true  # [win]
       rpaths:
         - lib/
         - {{ SP_DIR }}/adbc_driver_manager
@@ -192,10 +191,10 @@ outputs:
     build:
       noarch: python
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
-      skip: True                                                                 # [build_platform != target_platform]
-    script: build-python.sh                                                      # [not win]
-    script: build-python.bat                                                     # [win]
+      skip: true  # [win]
+      skip: true  # [build_platform != target_platform]
+    script: build-python.sh  # [not win]
+    script: build-python.bat  # [win]
     requirements:
       build:
         - pip
@@ -219,10 +218,10 @@ outputs:
     build:
       noarch: python
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
-      skip: True                                                                 # [build_platform != target_platform]
-    script: build-python.sh                                                      # [not win]
-    script: build-python.bat                                                     # [win]
+      skip: true  # [win]
+      skip: true  # [build_platform != target_platform]
+    script: build-python.sh  # [not win]
+    script: build-python.bat  # [win]
     requirements:
       build:
         - pip
@@ -246,10 +245,10 @@ outputs:
     build:
       noarch: python
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
-      skip: True                                                                 # [build_platform != target_platform]
-    script: build-python.sh                                                      # [not win]
-    script: build-python.bat                                                     # [win]
+      skip: true  # [win]
+      skip: true  # [build_platform != target_platform]
+    script: build-python.sh  # [not win]
+    script: build-python.bat  # [win]
     requirements:
       build:
         - pip
@@ -271,7 +270,7 @@ outputs:
 
 about:
   home: https://arrow.apache.org
-  summary: 'Database access libraries for Apache Arrow'
+  summary: Database access libraries for Apache Arrow
   description: |
     ADBC is an API standard for database access libraries ("drivers")
     in C and Java that uses Arrow for data. Instead of writing code
