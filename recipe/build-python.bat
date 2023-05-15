@@ -11,6 +11,11 @@ if "%PKG_NAME%" == "adbc-driver-postgresql" (
     set ADBC_POSTGRESQL_LIBRARY=%LIBRARY_BIN%\adbc_driver_postgresql.dll
     goto BUILD
 )
+if "%PKG_NAME%" == "adbc-driver-snowflake" (
+    pushd "%SRC_DIR%"\python\adbc_driver_snowflake
+    set ADBC_POSTGRESQL_LIBRARY=%LIBRARY_BIN%\adbc_driver_snowflake.dll
+    goto BUILD
+)
 if "%PKG_NAME%" == "adbc-driver-sqlite" (
     pushd "%SRC_DIR%"\python\adbc_driver_sqlite
     set ADBC_SQLITE_LIBRARY=%LIBRARY_BIN%\adbc_driver_sqlite.dll

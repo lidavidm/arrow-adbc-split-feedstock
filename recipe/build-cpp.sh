@@ -4,17 +4,20 @@ set -ex
 
 case "${PKG_NAME}" in
     libadbc-driver-manager)
-        export PKG_ROOT=c/driver_manager
+        export CMAKE_FLAGS="-DADBC_DRIVER_MANAGER=ON"
         ;;
     libadbc-driver-flightsql)
         export CGO_ENABLED=1
-        export PKG_ROOT=c/driver/flightsql
+        export CMAKE_FLAGS="-DADBC_DRIVER_FLIGHTSQL=ON"
         ;;
     libadbc-driver-postgresql)
-        export PKG_ROOT=c/driver/postgresql
+        export CMAKE_FLAGS="-DADBC_DRIVER_POSTGRESQL=ON"
+        ;;
+    libadbc-driver-snowflake)
+        export CMAKE_FLAGS="-DADBC_DRIVER_SNOWFLAKE=ON"
         ;;
     libadbc-driver-sqlite)
-        export PKG_ROOT=c/driver/sqlite
+        export CMAKE_FLAGS="-DADBC_DRIVER_SQLITE=ON"
         ;;
     *)
         echo "Unknown package ${PKG_NAME}"
@@ -40,12 +43,13 @@ fi
 mkdir -p "build-cpp/${PKG_NAME}"
 pushd "build-cpp/${PKG_NAME}"
 
-cmake "../../${PKG_ROOT}" \
+cmake "../../c" \
       -G Ninja \
       -DADBC_BUILD_SHARED=ON \
       -DADBC_BUILD_STATIC=OFF \
       -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
-      -DCMAKE_PREFIX_PATH="${PREFIX}"
+      -DCMAKE_PREFIX_PATH="${PREFIX}" \
+      ${CMAKE_FLAGS}
 
 cmake --build . --target install -j
 
