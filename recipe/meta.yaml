@@ -154,8 +154,8 @@ outputs:
         - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-sqlite.pc exit 1      # [win]
 
   - name: libadbc-driver-snowflake
-    script: build-cpp.sh                                                         # [not win]
-    script: build-cpp.bat                                                        # [win]
+    script: build-cpp.sh  # [not win]
+    script: build-cpp.bat  # [win]
     requirements:
       build:
         - {{ compiler('c') }}
@@ -167,7 +167,7 @@ outputs:
     build:
       # XXX: punting on non-unix platforms due to general issues
       # XXX: upstream only suports x64 in this release
-      skip: True                                                                 # [win or build_platform != target_platform]
+      skip: true  # [win or build_platform != target_platform]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-snowflake", max_pin="x.x") }}
       ignore_run_exports_from:
@@ -307,10 +307,10 @@ outputs:
     build:
       noarch: python
       # XXX: punting on non-unix platforms due to general issues
-      skip: True                                                                 # [win]
-      skip: True                                                                 # [build_platform != target_platform]
-    script: build-python.sh                                                      # [not win]
-    script: build-python.bat                                                     # [win]
+      skip: true  # [win]
+      skip: true  # [build_platform != target_platform]
+    script: build-python.sh  # [not win]
+    script: build-python.bat  # [win]
     requirements:
       build:
         - pip
