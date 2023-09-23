@@ -1,4 +1,4 @@
-{% set version = "0.6.0" %}
+{% set version = "0.7.0" %}
 
 package:
   name: arrow-adbc-split
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://dist.apache.org/repos/dist/release/arrow/apache-arrow-adbc-{{ version }}/apache-arrow-adbc-{{ version }}.tar.gz
-  sha256: c380c95a37779bf8d527a33114e290dce14c94f848615aaf14c5a94464abbe55
+  sha256: 3e9ce03ef5edb9954b6fc845da941a1ee12eca646762190008bffc07a91fe5b0
 
 build:
   number: 0
