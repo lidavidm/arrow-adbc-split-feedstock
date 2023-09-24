@@ -17,7 +17,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '15'
 libpq:
-- '15'
+- '16'
 libsqlite:
 - '3'
 macos_machine:
