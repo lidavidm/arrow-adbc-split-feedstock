@@ -9,7 +9,7 @@ source:
   sha256: 3e9ce03ef5edb9954b6fc845da941a1ee12eca646762190008bffc07a91fe5b0
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: libadbc-driver-manager
@@ -166,8 +166,7 @@ outputs:
         - ninja
     build:
       # XXX: punting on non-unix platforms due to general issues
-      # XXX: upstream only suports x64 in this release
-      skip: true  # [win or build_platform != target_platform]
+      skip: true  # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-snowflake", max_pin="x.x") }}
       ignore_run_exports_from:
