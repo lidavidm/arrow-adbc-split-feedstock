@@ -33,6 +33,7 @@ cmake ..\..\c ^
       -DCMAKE_BUILD_TYPE=Release ^
       -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -DCMAKE_PREFIX_PATH=%PREFIX% ^
+      %CMAKE_FLAGS% ^
       || exit /B 1
 
 ninja -t targets
