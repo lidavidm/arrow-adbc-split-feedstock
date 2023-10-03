@@ -35,6 +35,7 @@ cmake ..\..\c ^
       -DCMAKE_PREFIX_PATH=%PREFIX% ^
       || exit /B 1
 
-cmake --build . --target INSTALL --config Release -j || exit /B 1
+ninja -t targets
+cmake --build . --target install --config Release -j || exit /B 1
 
 popd
