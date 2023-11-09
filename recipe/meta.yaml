@@ -1,4 +1,4 @@
-{% set version = "0.7.0" %}
+{% set version = "0.8.0" %}
 
 package:
   name: arrow-adbc-split
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://dist.apache.org/repos/dist/release/arrow/apache-arrow-adbc-{{ version }}/apache-arrow-adbc-{{ version }}.tar.gz
-  sha256: 3e9ce03ef5edb9954b6fc845da941a1ee12eca646762190008bffc07a91fe5b0
+  sha256: b1d89fe17a19c8ad94dab5b4ea7dec3670391f19a6d8fecc7b88f7948aec3585
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   - name: libadbc-driver-manager
