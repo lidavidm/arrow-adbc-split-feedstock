@@ -133,9 +133,6 @@ outputs:
       skip: true  # [win]
       run_exports:
         - {{ pin_subpackage("libadbc-driver-sqlite", max_pin="x.x") }}
-      ignore_run_exports_from:
-        # apache/arrow-adbc#92: cmake config shouldn't initialize C++ unless needed
-        - {{ compiler('cxx') }}
     test:
       commands:
         - test ! -f $PREFIX/include/adbc.h                                       # [unix]
