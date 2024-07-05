@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://dist.apache.org/repos/dist/release/arrow/apache-arrow-adbc-{{ release }}/apache-arrow-adbc-{{ release }}.tar.gz
-  sha256: c3787bf3b17b5b321e3cff22ace819273d0bf0b54536622090f6cff3c78d17ab
+  sha256: 4cd49f7230eaa81bbed7d98c48bfb8536c84f7a8e6607a1824be6097aca6c859
 
 build:
   number: 0
