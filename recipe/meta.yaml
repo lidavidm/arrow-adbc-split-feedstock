@@ -10,7 +10,7 @@ source:
   sha256: 4cd49f7230eaa81bbed7d98c48bfb8536c84f7a8e6607a1824be6097aca6c859
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: libadbc-driver-manager
@@ -245,6 +245,7 @@ outputs:
       run:
         - {{ pin_subpackage('adbc-driver-manager') }}
         - {{ pin_subpackage('libadbc-driver-flightsql', max_pin='x.x.x', min_pin='x.x.x.x') }}
+        - importlib_resources
         - python >=3.9
       run_constrained:
         - pyarrow >=8.0.0
@@ -272,6 +273,7 @@ outputs:
       run:
         - {{ pin_subpackage('adbc-driver-manager') }}
         - {{ pin_subpackage('libadbc-driver-postgresql', max_pin='x.x.x', min_pin='x.x.x.x') }}
+        - importlib_resources
         - python >=3.9
       run_constrained:
         - pyarrow >=8.0.0
@@ -299,6 +301,7 @@ outputs:
       run:
         - {{ pin_subpackage('adbc-driver-manager') }}
         - {{ pin_subpackage('libadbc-driver-sqlite', max_pin='x.x.x', min_pin='x.x.x.x') }}
+        - importlib_resources
         - python >=3.9
       run_constrained:
         - pyarrow >=8.0.0
@@ -326,6 +329,7 @@ outputs:
       run:
         - {{ pin_subpackage('adbc-driver-manager') }}
         - {{ pin_subpackage('libadbc-driver-snowflake', max_pin='x.x.x', min_pin='x.x.x.x') }}
+        - importlib_resources
         - python >=3.9
       run_constrained:
         - pyarrow >=8.0.0
