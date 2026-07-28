@@ -1,5 +1,5 @@
-{% set release = "23" %}
-{% set version = "1.11.0" %}
+{% set release = "24" %}
+{% set version = "1.12.0" %}
 
 package:
   name: arrow-adbc-split
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://dlcdn.apache.org/arrow/apache-arrow-adbc-{{ release }}/apache-arrow-adbc-{{ release }}.tar.gz
-  sha256: c74059448355681bf306008e559238ade40af01658d6a8f230b8da34d9a40de9
+  sha256: 2b4b420937f62f7ae56f46dbd6951a5e4ef0da43158080a58cb44cdd09a8b2e0
 
 build:
   number: 0
@@ -37,8 +37,8 @@ outputs:
         - test -d $PREFIX/lib/cmake/AdbcDriverManager/                           # [unix]
         - test -f $PREFIX/lib/pkgconfig/adbc-driver-manager.pc                   # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_manager.a                         # [unix]
-        - test -f $PREFIX/lib/libadbc_driver_manager.so.111                      # [linux]
-        - test -f $PREFIX/lib/libadbc_driver_manager.111.dylib                   # [osx]
+        - test -f $PREFIX/lib/libadbc_driver_manager.so.112                      # [linux]
+        - test -f $PREFIX/lib/libadbc_driver_manager.112.dylib                   # [osx]
 
         - if not exist %LIBRARY_BIN%\adbc_driver_manager.dll exit 1              # [win]
         - if not exist %LIBRARY_INC%\arrow-adbc\adbc.h exit 1                    # [win]
@@ -48,42 +48,6 @@ outputs:
         - if not exist %LIBRARY_LIB%\adbc_driver_manager.lib exit 1              # [win]
         - if not exist %LIBRARY_LIB%\cmake\AdbcDriverManager exit 1              # [win]
         - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-manager.pc exit 1     # [win]
-
-  - name: libadbc-driver-bigquery
-    script: build-cpp.sh  # [not win]
-    script: build-cpp.bat  # [win]
-    requirements:
-      build:
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-        - {{ compiler('cgo') }}
-        - {{ stdlib("c") }}
-        - cmake
-        - go >=1.26
-        - ninja
-    build:
-      # XXX: punting on non-unix platforms due to general issues
-      skip: true  # [win]
-      run_exports:
-        - {{ pin_subpackage("libadbc-driver-bigquery", max_pin="x.x") }}
-      ignore_run_exports_from:
-        # apache/arrow-adbc#92: cmake config shouldn't initialize C++ unless needed
-        - {{ compiler('cxx') }}
-    test:
-      commands:
-        - test ! -f $PREFIX/include/adbc.h                                       # [unix]
-        - test ! -f $PREFIX/include/arrow-adbc/adbc.h                            # [unix]
-        - test -f $PREFIX/lib/pkgconfig/adbc-driver-bigquery.pc                  # [unix]
-        - test ! -f $PREFIX/lib/libadbc_driver_bigquery.a                        # [unix]
-        - test -f $PREFIX/lib/libadbc_driver_bigquery.so.111                     # [linux]
-        - test -f $PREFIX/lib/libadbc_driver_bigquery.dylib                      # [osx]
-        # TODO: testing exact dylib soname is fragile?
-        # - test -f $PREFIX/lib/libadbc_driver_bigquery.111.dylib                # [osx]
-
-        - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
-        - if not exist %LIBRARY_BIN%\adbc_driver_bigquery.dll exit 1             # [win]
-        - if not exist %LIBRARY_LIB%\adbc_driver_bigquery.lib exit 1             # [win]
-        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-bigquery.pc exit 1    # [win]
 
   - name: libadbc-driver-flightsql
     script: build-cpp.sh  # [not win]
@@ -111,10 +75,10 @@ outputs:
         - test ! -f $PREFIX/include/arrow-adbc/adbc.h                            # [unix]
         - test -f $PREFIX/lib/pkgconfig/adbc-driver-flightsql.pc                 # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_flightsql.a                       # [unix]
-        - test -f $PREFIX/lib/libadbc_driver_flightsql.so.111                    # [linux]
+        - test -f $PREFIX/lib/libadbc_driver_flightsql.so.112                    # [linux]
         - test -f $PREFIX/lib/libadbc_driver_flightsql.dylib                     # [osx]
         # TODO: testing exact dylib soname is fragile?
-        # - test -f $PREFIX/lib/libadbc_driver_flightsql.111.dylib               # [osx]
+        # - test -f $PREFIX/lib/libadbc_driver_flightsql.112.dylib               # [osx]
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_flightsql.dll exit 1            # [win]
@@ -146,10 +110,10 @@ outputs:
         - test -d $PREFIX/lib/cmake/AdbcDriverPostgreSQL/                        # [unix]
         - test -f $PREFIX/lib/pkgconfig/adbc-driver-postgresql.pc                # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_postgresql.a                      # [unix]
-        - test -f $PREFIX/lib/libadbc_driver_postgresql.so.111                   # [linux]
+        - test -f $PREFIX/lib/libadbc_driver_postgresql.so.112                   # [linux]
         - test -f $PREFIX/lib/libadbc_driver_postgresql.dylib                    # [osx]
         # TODO: testing exact dylib soname is fragile?
-        # - test -f $PREFIX/lib/libadbc_driver_postgresql.111.dylib              # [osx]
+        # - test -f $PREFIX/lib/libadbc_driver_postgresql.112.dylib              # [osx]
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_postgresql.dll exit 1           # [win]
@@ -182,86 +146,16 @@ outputs:
         - test -d $PREFIX/lib/cmake/AdbcDriverSQLite/                            # [unix]
         - test -f $PREFIX/lib/pkgconfig/adbc-driver-sqlite.pc                    # [unix]
         - test ! -f $PREFIX/lib/libadbc_driver_sqlite.a                          # [unix]
-        - test -f $PREFIX/lib/libadbc_driver_sqlite.so.111                       # [linux]
+        - test -f $PREFIX/lib/libadbc_driver_sqlite.so.112                       # [linux]
         - test -f $PREFIX/lib/libadbc_driver_sqlite.dylib                        # [osx]
         # TODO: testing exact dylib soname is fragile?
-        # - test -f $PREFIX/lib/libadbc_driver_sqlite.111.dylib                  # [osx]
+        # - test -f $PREFIX/lib/libadbc_driver_sqlite.112.dylib                  # [osx]
 
         - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
         - if not exist %LIBRARY_BIN%\adbc_driver_sqlite.dll exit 1               # [win]
         - if not exist %LIBRARY_LIB%\adbc_driver_sqlite.lib exit 1               # [win]
         - if not exist %LIBRARY_LIB%\cmake\AdbcDriverSQLite exit 1               # [win]
         - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-sqlite.pc exit 1      # [win]
-
-  - name: libadbc-driver-snowflake
-    script: build-cpp.sh  # [not win]
-    script: build-cpp.bat  # [win]
-    requirements:
-      build:
-        - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
-        - {{ compiler('cgo') }}
-        - {{ stdlib("c") }}
-        - cmake
-        - go >=1.26
-        - ninja
-    build:
-      # XXX: punting on non-unix platforms due to general issues
-      skip: true  # [win]
-      run_exports:
-        - {{ pin_subpackage("libadbc-driver-snowflake", max_pin="x.x") }}
-      ignore_run_exports_from:
-        # apache/arrow-adbc#92: cmake config shouldn't initialize C++ unless needed
-        - {{ compiler('cxx') }}
-    test:
-      commands:
-        - test ! -f $PREFIX/include/adbc.h                                       # [unix]
-        - test ! -f $PREFIX/include/arrow-adbc/adbc.h                            # [unix]
-        - test -f $PREFIX/lib/pkgconfig/adbc-driver-snowflake.pc                 # [unix]
-        - test ! -f $PREFIX/lib/libadbc_driver_snowflake.a                       # [unix]
-        - test -f $PREFIX/lib/libadbc_driver_snowflake.so.111                    # [linux]
-        - test -f $PREFIX/lib/libadbc_driver_snowflake.dylib                     # [osx]
-        # TODO: testing exact dylib soname is fragile?
-        # - test -f $PREFIX/lib/libadbc_driver_snowflake.111.dylib               # [osx]
-
-        - if exist %LIBRARY_INC%\adbc.h exit 1                                   # [win]
-        - if not exist %LIBRARY_BIN%\adbc_driver_snowflake.dll exit 1            # [win]
-        - if not exist %LIBRARY_LIB%\adbc_driver_snowflake.lib exit 1            # [win]
-        - if not exist %LIBRARY_LIB%\pkgconfig\adbc-driver-snowflake.pc exit 1   # [win]
-
-  - name: adbc-driver-bigquery
-    build:
-      noarch: python
-      # noarch requires only a single build
-      skip: true  # [not linux]
-      skip: true  # [build_platform != target_platform]
-    script: build-python.sh
-    requirements:
-      build:
-        - pip
-        - setuptools
-      host:
-        - {{ pin_subpackage('libadbc-driver-bigquery', max_pin='x.x.x', min_pin='x.x.x.x') }}
-        - pip
-        - python {{ python_min }}
-        - setuptools
-      run:
-        - {{ pin_subpackage('adbc-driver-manager') }}
-        - {{ pin_subpackage('libadbc-driver-bigquery', max_pin='x.x.x', min_pin='x.x.x.x') }}
-        - importlib_resources
-        - python >={{ python_min }}
-      run_constrained:
-        - pyarrow >=8.0.0
-    test:
-      imports:
-        - adbc_driver_bigquery
-      requires:
-        # This should be just {{ python_min }} but in CI that gives us a
-        # problem since we'll have only built adbc-driver-manager for the
-        # version of Python in the pipeline, not necessarily python_min.
-        # However {{ python_min }} will still be tested since one of the
-        # pipelines will build both on that version of Python.
-        - python >={{ python_min }}
 
   - name: adbc-driver-manager
     script: build-python.sh  # [not win]
@@ -384,35 +278,6 @@ outputs:
     test:
       imports:
         - adbc_driver_sqlite
-      requires:
-        - python >={{ python_min }}
-
-  - name: adbc-driver-snowflake
-    build:
-      noarch: python
-      # noarch requires only a single build
-      skip: true  # [not linux]
-      skip: true  # [build_platform != target_platform]
-    script: build-python.sh
-    requirements:
-      build:
-        - pip
-        - setuptools
-      host:
-        - {{ pin_subpackage('libadbc-driver-snowflake', max_pin='x.x.x', min_pin='x.x.x.x') }}
-        - pip
-        - python {{ python_min }}
-        - setuptools
-      run:
-        - {{ pin_subpackage('adbc-driver-manager') }}
-        - {{ pin_subpackage('libadbc-driver-snowflake', max_pin='x.x.x', min_pin='x.x.x.x') }}
-        - importlib_resources
-        - python >={{ python_min }}
-      run_constrained:
-        - pyarrow >=8.0.0
-    test:
-      imports:
-        - adbc_driver_snowflake
       requires:
         - python >={{ python_min }}
 
